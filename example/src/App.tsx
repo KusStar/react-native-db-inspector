@@ -30,16 +30,18 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => DbInspector.show()}
-        style={{
-          padding: 16,
-          borderWidth: 1,
-          borderRadius: 8,
-          borderColor: isDarkMode ? 'white' : 'black',
-        }}
-      >
-        <Text>Show DB Inspector</Text>
+      <TouchableOpacity onPress={() => DbInspector.show()}>
+        <Text
+          style={{
+            padding: 16,
+            borderWidth: 1,
+            borderRadius: 8,
+            borderColor: isDarkMode ? 'white' : 'black',
+            color: isDarkMode ? 'white' : 'black',
+          }}
+        >
+          Show DB Inspector
+        </Text>
       </TouchableOpacity>
     </View>
   );
