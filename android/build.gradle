@@ -14,19 +14,10 @@ buildscript {
   }
 }
 
-def isNewArchitectureEnabled() {
-  return rootProject.hasProperty("newArchEnabled") && rootProject.getProperty("newArchEnabled") == "true"
-}
-
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 
-
 def appProject = rootProject.allprojects.find { it.plugins.hasPlugin('com.android.application') }
-
-if (isNewArchitectureEnabled()) {
-  apply plugin: "com.facebook.react"
-}
 
 def getExtOrDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["DbInspector_" + name]
@@ -42,7 +33,6 @@ android {
   defaultConfig {
     minSdkVersion getExtOrIntegerDefault("minSdkVersion")
     targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
-    buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
   }
   buildTypes {
     release {
@@ -59,19 +49,6 @@ android {
     targetCompatibility JavaVersion.VERSION_1_8
   }
 
-  sourceSets {
-    main {
-      if (isNewArchitectureEnabled()) {
-        java.srcDirs += [
-          "src/newarch",
-          // This is needed to build Kotlin project with NewArch enabled
-          "${project.buildDir}/generated/source/codegen/java"
-        ]
-      } else {
-        java.srcDirs += ["src/oldarch"]
-      }
-    }
-  }
 }
 
 repositories {
@@ -90,12 +67,4 @@ dependencies {
   // deps
   debugImplementation "com.infinum.dbinspector:dbinspector:5.4.9"
   releaseImplementation "com.infinum.dbinspector:dbinspector-no-op:5.4.9"
-}
-
-if (isNewArchitectureEnabled()) {
-  react {
-    jsRootDir = file("../src/")
-    libraryName = "DbInspector"
-    codegenJavaPackageName = "com.dbinspector"
-  }
 }

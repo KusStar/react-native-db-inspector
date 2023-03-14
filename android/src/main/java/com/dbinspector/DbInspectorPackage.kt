@@ -1,35 +1,20 @@
 package com.dbinspector
 
-import com.facebook.react.TurboReactPackage
-import com.facebook.react.bridge.ReactApplicationContext
+import android.view.View
+import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule
-import com.facebook.react.module.model.ReactModuleInfoProvider
-import com.facebook.react.module.model.ReactModuleInfo
-import java.util.HashMap
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.uimanager.ReactShadowNode
+import com.facebook.react.uimanager.ViewManager
+import java.util.*
 
-class DbInspectorPackage : TurboReactPackage() {
-  override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == DbInspectorModule.NAME) {
-      DbInspectorModule(reactContext)
-    } else {
-      null
-    }
+class DbInspectorPackage : ReactPackage {
+  override fun createNativeModules(reactContext: ReactApplicationContext): MutableList<NativeModule> {
+    return Collections.singletonList(DbInspectorModule(reactContext));
   }
 
-  override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
-    return ReactModuleInfoProvider {
-      val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      val isTurboModule: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
-      moduleInfos[DbInspectorModule.NAME] = ReactModuleInfo(
-        DbInspectorModule.NAME,
-        DbInspectorModule.NAME,
-        false,  // canOverrideExistingModule
-        false,  // needsEagerInit
-        true,  // hasConstants
-        false,  // isCxxModule
-        isTurboModule // isTurboModule
-      )
-      moduleInfos
-    }
+  override fun createViewManagers(p0: ReactApplicationContext): MutableList<ViewManager<View, ReactShadowNode<*>>> {
+    return Collections.emptyList();
   }
+
 }

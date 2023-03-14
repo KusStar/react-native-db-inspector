@@ -1,18 +1,19 @@
 package com.dbinspector
 
 import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.infinum.dbinspector.DbInspector
 
 class DbInspectorModule internal constructor(context: ReactApplicationContext) :
-  DbInspectorSpec(context) {
+  ReactContextBaseJavaModule(context) {
 
   override fun getName(): String {
     return NAME
   }
 
   @ReactMethod
-  override fun show() {
+  fun show() {
     DbInspector.show()
   }
 
