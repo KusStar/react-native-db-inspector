@@ -1,12 +1,20 @@
 # react-native-db-inspector
 
-DB Inspector for React-native, for legacy react-native, without support turbo module
+DB Inspector wrapper for react-native(< 0.66)
+
+## Platform Supported
+
+- [ ] iOS, Unsupported
+- [x] Android, use [infinum/android_dbinspector](https://github.com/infinum/android_dbinspector)
+
+  ![android-inspector](https://raw.githubusercontent.com/infinum/android_dbinspector/master/ui.png)
+  *From <https://github.com/infinum/android_dbinspector>*
 
 ## Installation
 
 ```sh
-npm install react-native-db-inspector
-# yarn add react-native-db-inspector
+npm install react-native-db-inspector@0.1.0-legacy
+# yarn add react-native-db-inspector@0.1.0-legacy
 ```
 
 ## Usage
