@@ -23,13 +23,14 @@
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
-    "!**/.*"
+    "!**/.*",
+    "android/build/outputs/aar"
   ],
   "scripts": {
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "prepack": "bob build",
+    "prepack": "bob build && node scripts/build-aar.js",
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install",
@@ -153,8 +154,7 @@
         {
           "project": "tsconfig.build.json"
         }
-      ],
-      ["aar", { "reverseJetify": true }]
+      ]
     ]
   },
   "codegenConfig": {
