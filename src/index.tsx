@@ -6,14 +6,9 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-// @ts-expect-error
-const isTurboModuleEnabled = global.__turboModuleProxy != null;
+const DbInspectorModule = NativeModules.DbInspector;
 
-const DbInspectorModule = isTurboModuleEnabled
-  ? require('./NativeDbInspector').default
-  : NativeModules.DbInspector;
-
-const DbInspector = DbInspectorModule
+const DbInspectorNative = DbInspectorModule
   ? DbInspectorModule
   : new Proxy(
       {},
@@ -24,11 +19,15 @@ const DbInspector = DbInspectorModule
       }
     );
 
-export default {
-  show: Platform.select({
-    android: DbInspector.show,
-    ios: () => {
-      // TODO
-    },
-  }),
+export const show = Platform.select({
+  android: DbInspectorNative.show,
+  ios: () => {
+    // TODO
+  },
+}) as () => void;
+
+const DbInspector = {
+  show,
 };
+
+export default DbInspector;
