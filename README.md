@@ -1,21 +1,30 @@
 # react-native-db-inspector
 
-DB Inspector for React-native
+DB Inspector wrapper for react-native
+
+## Platform Supported
+
+- [ ] iOS, Unsupported
+- [x] Android, use [infinum/android_dbinspector](https://github.com/infinum/android_dbinspector)
+
+  ![android-inspector](https://raw.githubusercontent.com/infinum/android_dbinspector/master/ui.png)
+  *From <https://github.com/infinum/android_dbinspector>*
 
 ## Installation
 
 ```sh
 npm install react-native-db-inspector
+# yarn add react-native-db-inspector
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-db-inspector';
+import DbInspector from 'react-native-db-inspector';
 
 // ...
 
-const result = await multiply(3, 7);
+DbInspector.show()
 ```
 
 ## Contributing
