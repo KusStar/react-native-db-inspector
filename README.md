@@ -1,21 +1,22 @@
 # react-native-db-inspector
 
-DB Inspector for React-native
+DB Inspector for React-native, for legacy react-native, without support turbo module
 
 ## Installation
 
 ```sh
 npm install react-native-db-inspector
+# yarn add react-native-db-inspector
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-db-inspector';
+import DbInspector from 'react-native-db-inspector';
 
 // ...
 
-const result = await multiply(3, 7);
+DbInspector.show()
 ```
 
 ## Contributing
