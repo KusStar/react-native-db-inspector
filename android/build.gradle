@@ -87,6 +87,9 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  // deps
+  debugImplementation "com.infinum.dbinspector:dbinspector:5.4.9"
+  releaseImplementation "com.infinum.dbinspector:dbinspector-no-op:5.4.9"
 }
 
 if (isNewArchitectureEnabled()) {

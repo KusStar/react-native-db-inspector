@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.dbinspector"
+  xmlns:tools="http://schemas.android.com/tools">
+  <application>
+        <!--suppress
+    AndroidDomInspection -->
+    <activity
+      android:name="com.infinum.dbinspector.DbInspectorActivity"
+      tools:node="remove" />
+  </application>
+</manifest>

@@ -24,6 +24,11 @@ const DbInspector = DbInspectorModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return DbInspector.multiply(a, b);
-}
+export default {
+  show: Platform.select({
+    android: DbInspector.show,
+    ios: () => {
+      // TODO
+    },
+  }),
+};
